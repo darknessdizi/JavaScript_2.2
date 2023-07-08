@@ -1,7 +1,6 @@
 const textMessageFirst = [
     'Добрый день, мы ещё не проснулись. Позвоните через 10 лет.',
     'Вы ничего не купили! Убирайтесь пока я полицию не вызвал!',
-    'И долго Вы будете соображать?',
     'Тихо я сказал!!! Или я тихо сказал?',
     'Абонент временно не доступен. Оплатите счет.',
     'На Вашем счете не достаточно средств. Приходите позже.',
@@ -17,6 +16,7 @@ const textMessageSecond = [
     'Чего стоим? Кого ждем?',
     'Время деньги! У нас оплата посекундная.',
     'Вы можете и помолчать. Счет Вам на почту прислать?',
+    'И долго Вы будете соображать?',
 ];
 
 let array = textMessageFirst.slice();
@@ -56,9 +56,9 @@ input.addEventListener('keyup', (event) => {
     }
 });
 
-// input.addEventListener('change', () => {
-//     timer();
-// })
+input.addEventListener('input', () => {
+    timer();
+})
 
 function sendMessage(text, client=false) {
     let nameClass = 'message';
@@ -68,7 +68,9 @@ function sendMessage(text, client=false) {
     } 
     messages.innerHTML += `
         <div class="${nameClass}">
-            <div class="message__time">${time.getHours()}:${time.getMinutes()}</div>
+            <div class="message__time">
+                ${time.getHours()}:${time.getMinutes()}
+            </div>
             <div class="message__text">
                 ${text}
             </div>
@@ -83,18 +85,17 @@ function moveScroll() {
     conteiner.scrollTo({
         top: conteiner.scrollHeight,
         behavior: 'smooth',
-    })
+    });
 }
 
 function timer() {
     clearTimeout(count);
     count = setTimeout(() => {
-        console.log('time')
         index = Math.floor(Math.random() * arraySecond.length);
         sendMessage(arraySecond[index]);
         arraySecond.splice(index, 1);
         if (!arraySecond.length) {
             arraySecond = textMessageSecond.slice();
         }
-    }, 5000);
+    }, 30000);
 }
