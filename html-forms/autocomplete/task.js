@@ -68,25 +68,17 @@ class Autocomplete {
   }
 
   getMatches( text ) {
-    /*
-      TODO: этот метод нужно дописать
-      text - фраза, которую вводят в поле поиска
-      Метод должен вернуть массив.
+      const array = [];
+      const lowerText = text.toLowerCase();
 
-      Он формируется на основе списка опций select-элемента (this.input)
-      Подходящие опции - те, чей текст содержит то, что есть в аргументе text
-      Необходимо вернуть массив объектов со свойствами:
-      {
-        text: 'Содержимое <option>',
-        value: 'Содержимое атрибута value'
-      }
-    */
-    return [
-      {
-        text: 'Чубакка',
-        value: '1'
-      }
-    ];
+      for (let element of this.input) {
+        if (element.text.toLowerCase().includes(lowerText)) {
+          array.push({
+            text: element.text, value: element.value,
+          });
+        }
+      };
+    return array;
   }
 }
 
