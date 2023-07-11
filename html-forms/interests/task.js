@@ -27,7 +27,7 @@ function reversLi(element) {
         });
         const searchElement = inputArray.find((item) => {
             // проверяем: все элементы выбраны (ищем состояние false)
-            return !item.checked 
+            return !item.checked;
         });
         const parentInput = parentElementLi.querySelector('input');
         if (!searchElement) { // undefined , значит все элементы выбраны
@@ -38,7 +38,7 @@ function reversLi(element) {
             const searchElement = inputArray.find((item) => {
                 // проверяем: все элементы отменены (ищем состояние true)
                 return item.checked || item.indeterminate;  
-            })
+            });
             parentInput.indeterminate = !searchElement ? false : true;
         }
         reversLi(parentElementLi);

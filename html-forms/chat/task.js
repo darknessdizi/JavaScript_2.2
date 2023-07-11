@@ -58,7 +58,7 @@ input.addEventListener('keyup', (event) => {
 
 input.addEventListener('input', () => {
     timer();
-})
+});
 
 function sendMessage(text, client=false) {
     let nameClass = 'message';

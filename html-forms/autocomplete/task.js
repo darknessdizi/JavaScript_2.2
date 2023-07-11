@@ -77,7 +77,7 @@ class Autocomplete {
             text: element.text, value: element.value,
           });
         }
-      };
+      }
     return array;
   }
 }
